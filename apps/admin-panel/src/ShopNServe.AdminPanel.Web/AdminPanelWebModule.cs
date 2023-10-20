@@ -165,6 +165,7 @@ public class AdminPanelWebModule : AbpModule
                 options.Scope.Add("email");
                 options.Scope.Add("phone");
                 options.Scope.Add("AuthServer");
+                options.Scope.Add("AdminPanel");
             });
     }
 

@@ -64,6 +64,15 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 Name = "AuthServer", DisplayName = "AuthServer API", Resources = { "AuthServer" }
             });
         }
+        if (await _openIddictScopeRepository.FindByNameAsync("AdminPanel") == null)
+        {
+            await _scopeManager.CreateAsync(new OpenIddictScopeDescriptor
+            {
+                Name = "AdminPanel",
+                DisplayName = "AdminPanel Web App",
+                Resources = { "AdminPanel" }
+            });
+        }
     }
 
     private async Task CreateApplicationsAsync()
@@ -74,35 +83,35 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
             OpenIddictConstants.Permissions.Scopes.Phone,
             OpenIddictConstants.Permissions.Scopes.Profile,
             OpenIddictConstants.Permissions.Scopes.Roles,
-            "AuthServer"
+            "AuthServer",
         };
 
         var configurationSection = _configuration.GetSection("OpenIddict:Applications");
 
-        //Web Client
-        var webClientId = configurationSection["AuthServer_Web:ClientId"];
-        if (!webClientId.IsNullOrWhiteSpace())
-        {
-            var webClientRootUrl = configurationSection["AuthServer_Web:RootUrl"]!.EnsureEndsWith('/');
+        ////Web Client
+        //var webClientId = configurationSection["AuthServer_Web:ClientId"];
+        //if (!webClientId.IsNullOrWhiteSpace())
+        //{
+        //    var webClientRootUrl = configurationSection["AuthServer_Web:RootUrl"]!.EnsureEndsWith('/');
 
-            /* AuthServer_Web client is only needed if you created a tiered
-             * solution. Otherwise, you can delete this client. */
-            await CreateApplicationAsync(
-                name: webClientId!,
-                type: OpenIddictConstants.ClientTypes.Confidential,
-                consentType: OpenIddictConstants.ConsentTypes.Implicit,
-                displayName: "Web Application",
-                secret: configurationSection["AuthServer_Web:ClientSecret"] ?? "1q2w3e*",
-                grantTypes: new List<string> //Hybrid flow
-                {
-                    OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
-                },
-                scopes: commonScopes,
-                redirectUri: $"{webClientRootUrl}signin-oidc",
-                clientUri: webClientRootUrl,
-                postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
-            );
-        }
+        //    /* AuthServer_Web client is only needed if you created a tiered
+        //     * solution. Otherwise, you can delete this client. */
+        //    await CreateApplicationAsync(
+        //        name: webClientId!,
+        //        type: OpenIddictConstants.ClientTypes.Confidential,
+        //        consentType: OpenIddictConstants.ConsentTypes.Implicit,
+        //        displayName: "Web Application",
+        //        secret: configurationSection["AuthServer_Web:ClientSecret"] ?? "1q2w3e*",
+        //        grantTypes: new List<string> //Hybrid flow
+        //        {
+        //            OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
+        //        },
+        //        scopes: commonScopes,
+        //        redirectUri: $"{webClientRootUrl}signin-oidc",
+        //        clientUri: webClientRootUrl,
+        //        postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
+        //    );
+        //}
 
         //Console Test / Angular Client
         var consoleAndAngularClientId = configurationSection["AuthServer_App:ClientId"];
@@ -187,6 +196,31 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 scopes: commonScopes,
                 redirectUri: $"{swaggerRootUrl}/swagger/oauth2-redirect.html",
                 clientUri: swaggerRootUrl
+            );
+        }
+
+        // Admin Panel Web Client
+        var adminPanelWebClientId = configurationSection["AdminPanel_Web:ClientId"];
+        if (!adminPanelWebClientId.IsNullOrWhiteSpace())
+        {
+            var webClientRootUrl = configurationSection["AdminPanel_Web:RootUrl"]!.EnsureEndsWith('/');
+
+            /* AuthServer_Web client is only needed if you created a tiered
+             * solution. Otherwise, you can delete this client. */
+            await CreateApplicationAsync(
+                name: adminPanelWebClientId!,
+                type: OpenIddictConstants.ClientTypes.Confidential,
+                consentType: OpenIddictConstants.ConsentTypes.Implicit,
+                displayName: "Admin Panel Web Application",
+                secret: configurationSection["AdminPanel_Web:ClientSecret"] ?? "1q2w3e*",
+                grantTypes: new List<string> //Hybrid flow
+                {
+                    OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
+                },
+                scopes: new List<string>(commonScopes) {  "AdminPanel" },
+                redirectUri: $"{webClientRootUrl}signin-oidc",
+                clientUri: webClientRootUrl,
+                postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
             );
         }
     }
