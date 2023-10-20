@@ -44,12 +44,13 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using ShopNServe.AuthServer;
 
 namespace ShopNServe.AdminPanel.Web;
 
 [DependsOn(
-    typeof(AdminPanelHttpApiClientModule),
-    typeof(AdminPanelHttpApiModule),
+    typeof(AuthServerHttpApiClientModule),
+    //typeof(AdminPanelHttpApiModule),
     typeof(AbpAspNetCoreAuthenticationOpenIdConnectModule),
     typeof(AbpAspNetCoreMvcClientModule),
     typeof(AbpHttpClientWebModule),
@@ -73,7 +74,7 @@ public class AdminPanelWebModule : AbpModule
             options.AddAssemblyResource(
                 typeof(AdminPanelResource),
                 typeof(AdminPanelDomainSharedModule).Assembly,
-                typeof(AdminPanelApplicationContractsModule).Assembly,
+                //typeof(AdminPanelApplicationContractsModule).Assembly,
                 typeof(AdminPanelWebModule).Assembly
             );
         });
@@ -182,7 +183,7 @@ public class AdminPanelWebModule : AbpModule
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.ReplaceEmbeddedByPhysical<AdminPanelDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}ShopNServe.AdminPanel.Domain.Shared"));
-                options.FileSets.ReplaceEmbeddedByPhysical<AdminPanelApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}ShopNServe.AdminPanel.Application.Contracts"));
+                //options.FileSets.ReplaceEmbeddedByPhysical<AdminPanelApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}ShopNServe.AdminPanel.Application.Contracts"));
                 options.FileSets.ReplaceEmbeddedByPhysical<AdminPanelWebModule>(hostingEnvironment.ContentRootPath);
             });
         }

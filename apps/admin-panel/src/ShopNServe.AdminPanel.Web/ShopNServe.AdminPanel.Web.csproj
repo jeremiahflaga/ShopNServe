@@ -39,8 +39,6 @@
     <PackageReference Include="Volo.Abp.Identity.Web" Version="7.4.0" />
     <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="7.4.0" />
     <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="7.4.0" />
-    <ProjectReference Include="..\ShopNServe.AdminPanel.HttpApi.Client\ShopNServe.AdminPanel.HttpApi.Client.csproj" />
-    <ProjectReference Include="..\ShopNServe.AdminPanel.HttpApi\ShopNServe.AdminPanel.HttpApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +46,11 @@
     <Content Remove="Logs\**" />
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\auth-server\src\ShopNServe.AuthServer.HttpApi.Client\ShopNServe.AuthServer.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\ShopNServe.AdminPanel.Domain.Shared\ShopNServe.AdminPanel.Domain.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
