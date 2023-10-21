@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "ShopNServe.ProductCatalog.Domain.Shared": {
+      "path": "src/ShopNServe.ProductCatalog.Domain.Shared/ShopNServe.ProductCatalog.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.Domain": {
+      "path": "src/ShopNServe.ProductCatalog.Domain/ShopNServe.ProductCatalog.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.Application.Contracts": {
+      "path": "src/ShopNServe.ProductCatalog.Application.Contracts/ShopNServe.ProductCatalog.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.Application": {
+      "path": "src/ShopNServe.ProductCatalog.Application/ShopNServe.ProductCatalog.Application.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.EntityFrameworkCore": {
+      "path": "src/ShopNServe.ProductCatalog.EntityFrameworkCore/ShopNServe.ProductCatalog.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.MongoDB": {
+      "path": "src/ShopNServe.ProductCatalog.MongoDB/ShopNServe.ProductCatalog.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.HttpApi": {
+      "path": "src/ShopNServe.ProductCatalog.HttpApi/ShopNServe.ProductCatalog.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.HttpApi.Client": {
+      "path": "src/ShopNServe.ProductCatalog.HttpApi.Client/ShopNServe.ProductCatalog.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.TestBase": {
+      "path": "test/ShopNServe.ProductCatalog.TestBase/ShopNServe.ProductCatalog.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.ProductCatalog.EntityFrameworkCore.Tests": {
+      "path": "test/ShopNServe.ProductCatalog.EntityFrameworkCore.Tests/ShopNServe.ProductCatalog.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.ProductCatalog.MongoDB.Tests": {
+      "path": "test/ShopNServe.ProductCatalog.MongoDB.Tests/ShopNServe.ProductCatalog.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.ProductCatalog.Domain.Tests": {
+      "path": "test/ShopNServe.ProductCatalog.Domain.Tests/ShopNServe.ProductCatalog.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.ProductCatalog.Application.Tests": {
+      "path": "test/ShopNServe.ProductCatalog.Application.Tests/ShopNServe.ProductCatalog.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.ProductCatalog.HttpApi.Host": {
+      "path": "host/ShopNServe.ProductCatalog.HttpApi.Host/ShopNServe.ProductCatalog.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.ProductCatalog.Web": {
+      "path": "src/ShopNServe.ProductCatalog.Web/ShopNServe.ProductCatalog.Web.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/ShopNServe.ProductCatalog.HttpApi.Client.ConsoleTestApp/ShopNServe.ProductCatalog.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.ProductCatalog.Web.Host": {
+      "path": "host/ShopNServe.ProductCatalog.Web.Host/ShopNServe.ProductCatalog.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.ProductCatalog.AuthServer": {
+      "path": "host/ShopNServe.ProductCatalog.AuthServer/ShopNServe.ProductCatalog.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.ProductCatalog.Host.Shared": {
+      "path": "host/ShopNServe.ProductCatalog.Host.Shared/ShopNServe.ProductCatalog.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.ProductCatalog.Web.Unified": {
+      "path": "host/ShopNServe.ProductCatalog.Web.Unified/ShopNServe.ProductCatalog.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.ProductCatalog.Blazor": {
+      "path": "src/ShopNServe.ProductCatalog.Blazor/ShopNServe.ProductCatalog.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.Blazor.Host": {
+      "path": "host/ShopNServe.ProductCatalog.Blazor.Host/ShopNServe.ProductCatalog.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.ProductCatalog.Blazor.Server": {
+      "path": "src/ShopNServe.ProductCatalog.Blazor.Server/ShopNServe.ProductCatalog.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.Blazor.WebAssembly": {
+      "path": "src/ShopNServe.ProductCatalog.Blazor.WebAssembly/ShopNServe.ProductCatalog.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.ProductCatalog.Blazor.Server.Host": {
+      "path": "host/ShopNServe.ProductCatalog.Blazor.Server.Host/ShopNServe.ProductCatalog.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

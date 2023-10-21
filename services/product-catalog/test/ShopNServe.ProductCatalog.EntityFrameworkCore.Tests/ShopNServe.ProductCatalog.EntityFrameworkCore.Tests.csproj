@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ShopNServe.ProductCatalog</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.10" />
+    <ProjectReference Include="..\..\src\ShopNServe.ProductCatalog.EntityFrameworkCore\ShopNServe.ProductCatalog.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\ShopNServe.ProductCatalog.TestBase\ShopNServe.ProductCatalog.TestBase.csproj" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="7.4.0" />
+  </ItemGroup>
+
+</Project>

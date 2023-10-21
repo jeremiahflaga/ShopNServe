@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ShopNServe.ProductCatalog</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="7.4.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="7.4.0" />
+    <ProjectReference Include="..\ShopNServe.ProductCatalog.Application.Contracts\ShopNServe.ProductCatalog.Application.Contracts.csproj" />
+    <ProjectReference Include="..\ShopNServe.ProductCatalog.Domain\ShopNServe.ProductCatalog.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

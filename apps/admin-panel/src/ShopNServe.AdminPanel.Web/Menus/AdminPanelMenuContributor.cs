@@ -63,6 +63,28 @@ public class AdminPanelMenuContributor : IMenuContributor
         administration.SetSubItemOrder(IdentityMenuNames.GroupName, 2);
         administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 3);
 
+        context.Menu.Items.Insert(
+            0,
+            new ApplicationMenuItem(
+                AdminPanelMenus.Home,
+                l["Product Catalog"],
+                "~/ProductCatalog",
+                icon: "fas fa-home",
+                order: 0
+            )
+        );
+
+        context.Menu.Items.Insert(
+            0,
+            new ApplicationMenuItem(
+                AdminPanelMenus.Home,
+                l["Service Catalog"],
+                "~/",
+                icon: "fas fa-home",
+                order: 0
+            )
+        );
+
         return Task.CompletedTask;
     }
 

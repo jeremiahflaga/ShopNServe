@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "ShopNServe.ProductCatalog": {
+      "path": "ShopNServe.ProductCatalog.abpmdl.json"
+    }
+  }
+}
