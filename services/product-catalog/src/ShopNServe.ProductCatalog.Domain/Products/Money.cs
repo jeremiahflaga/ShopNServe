@@ -11,6 +11,15 @@ namespace ShopNServe.ProductCatalog.Products
             : this(Products.Currency.USD, 0)
         { /* for ORM use */ }
 
+        public Money(string currency, decimal amount)
+        {
+            if (!Enum.IsDefined(typeof(Currency), currency))
+                throw new ArgumentException($"Invalid currency {currency}");
+
+            Currency = currency;
+            Amount = amount;
+        }
+
         public Money(Currency currency, decimal amount)
         {
             Currency = currency.ToString();
