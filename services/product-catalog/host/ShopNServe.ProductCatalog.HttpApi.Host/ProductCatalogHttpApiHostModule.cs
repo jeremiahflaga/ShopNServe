@@ -42,12 +42,12 @@ namespace ShopNServe.ProductCatalog;
     typeof(ProductCatalogHttpApiModule),
     typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
+    //typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
-    typeof(AbpAuditLoggingEntityFrameworkCoreModule),
-    typeof(AbpPermissionManagementEntityFrameworkCoreModule),
-    typeof(AbpSettingManagementEntityFrameworkCoreModule),
-    typeof(AbpTenantManagementEntityFrameworkCoreModule),
+    //typeof(AbpAuditLoggingEntityFrameworkCoreModule),
+    //typeof(AbpPermissionManagementEntityFrameworkCoreModule),
+    //typeof(AbpSettingManagementEntityFrameworkCoreModule),
+    //typeof(AbpTenantManagementEntityFrameworkCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
     )]
@@ -186,10 +186,11 @@ public class ProductCatalogHttpApiHostModule : AbpModule
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Support APP API");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Product Catalog API");
 
             var configuration = context.GetConfiguration();
             options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
+            //options.OAuthClientSecret(configuration["AuthServer:SwaggerClientSecret"]);
             options.OAuthScopes("ProductCatalog");
         });
         app.UseAuditing();

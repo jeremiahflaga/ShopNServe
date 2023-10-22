@@ -11,8 +11,9 @@ using Volo.Abp.Domain.Repositories;
 
 namespace ShopNServe.ProductCatalog.Products;
 
-[Authorize(ProductCatalogPermissions.Products.Default)]
-public class ProductAppService : ApplicationService, IProductAppService
+// TODO: Authorize
+//[Authorize(ProductCatalogPermissions.Products.Default)]
+public class ProductAppService : ProductCatalogAppService, IProductAppService
 {
     private readonly ProductManager _productManager;
     private readonly IRepository<Product, Guid> _productRepository;
@@ -56,7 +57,8 @@ public class ProductAppService : ApplicationService, IProductAppService
         return ObjectMapper.Map<Product, ProductDto>(product);
     }
 
-    [Authorize(ProductCatalogPermissions.Products.Create)]
+    // TODO: Authorize
+    //[Authorize(ProductCatalogPermissions.Products.Create)]
     public async Task<ProductDto> CreateAsync(CreateProductDto input)
     {
         var product = await _productManager.CreateAsync(
@@ -70,7 +72,8 @@ public class ProductAppService : ApplicationService, IProductAppService
         return ObjectMapper.Map<Product, ProductDto>(product);
     }
 
-    [Authorize(ProductCatalogPermissions.Products.Update)]
+    // TODO: Authorize
+    //[Authorize(ProductCatalogPermissions.Products.Update)]
     public async Task<ProductDto> UpdateAsync(Guid id, UpdateProductDto input)
     {
         var product = await _productRepository.GetAsync(id);
@@ -85,7 +88,8 @@ public class ProductAppService : ApplicationService, IProductAppService
         return ObjectMapper.Map<Product, ProductDto>(product);
     }
 
-    [Authorize(ProductCatalogPermissions.Products.Delete)]
+    // TODO: Authorize
+    //[Authorize(ProductCatalogPermissions.Products.Delete)]
     public async Task DeleteAsync(Guid id)
     {
         await _productRepository.DeleteAsync(id);

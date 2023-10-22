@@ -73,6 +73,15 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 Resources = { "AdminPanel" }
             });
         }
+        if (await _openIddictScopeRepository.FindByNameAsync("ProductCatalog") == null)
+        {
+            await _scopeManager.CreateAsync(new OpenIddictScopeDescriptor
+            {
+                Name = "ProductCatalog",
+                DisplayName = "ProductCatalog Swagger",
+                Resources = { "ProductCatalog" }
+            });
+        }
     }
 
     private async Task CreateApplicationsAsync()
@@ -217,10 +226,34 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 {
                     OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
                 },
-                scopes: new List<string>(commonScopes) {  "AdminPanel" },
+                scopes: new List<string>(commonScopes) { "AdminPanel" },
                 redirectUri: $"{webClientRootUrl}signin-oidc",
                 clientUri: webClientRootUrl,
                 postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
+            );
+        }
+
+        await CreateProductCatalogSwaggerClientApplicationAsync(commonScopes, configurationSection);
+    }
+
+    private async Task CreateProductCatalogSwaggerClientApplicationAsync(List<string> commonScopes, IConfigurationSection configurationSection)
+    {
+        // Product Catalog Service Swagger Client
+        var productCatalogSwaggerClientId = configurationSection["ProductCatalog_Swagger:ClientId"];
+        if (!productCatalogSwaggerClientId.IsNullOrWhiteSpace())
+        {
+            var swaggerRootUrl = configurationSection["ProductCatalog_Swagger:RootUrl"]?.TrimEnd('/');
+
+            await CreateApplicationAsync(
+                name: productCatalogSwaggerClientId!,
+                type: OpenIddictConstants.ClientTypes.Public,
+                consentType: OpenIddictConstants.ConsentTypes.Implicit,
+                displayName: "Product Catalog Service Swagger Application",
+                secret: null,
+                grantTypes: new List<string> { OpenIddictConstants.GrantTypes.AuthorizationCode, },
+                scopes: new List<string>(commonScopes) { "ProductCatalog" },
+                redirectUri: $"{swaggerRootUrl}/swagger/oauth2-redirect.html",
+                clientUri: swaggerRootUrl
             );
         }
     }
