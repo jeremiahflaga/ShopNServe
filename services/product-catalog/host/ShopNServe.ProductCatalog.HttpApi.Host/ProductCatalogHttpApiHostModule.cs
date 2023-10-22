@@ -33,6 +33,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.AspNetCore.Mvc;
 
 namespace ShopNServe.ProductCatalog;
 
@@ -84,11 +85,11 @@ public class ProductCatalogHttpApiHostModule : AbpModule
             configuration["AuthServer:Authority"]!,
             new Dictionary<string, string>
             {
-                {"ProductCatalog", "ProductCatalog API"}
+                {"ProductCatalog", "Product Catalog API"}
             },
             options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo {Title = "ProductCatalog API", Version = "v1"});
+                options.SwaggerDoc("v1", new OpenApiInfo {Title = "Product Catalog API", Version = "v1"});
                 options.DocInclusionPredicate((docName, description) => true);
                 options.CustomSchemaIds(type => type.FullName);
             });
@@ -154,6 +155,11 @@ public class ProductCatalogHttpApiHostModule : AbpModule
                     .AllowAnyMethod()
                     .AllowCredentials();
             });
+        });
+
+        Configure<AbpAspNetCoreMvcOptions>(options =>
+        {
+            options.ConventionalControllers.Create(typeof(ProductCatalogApplicationModule).Assembly);
         });
     }
 
