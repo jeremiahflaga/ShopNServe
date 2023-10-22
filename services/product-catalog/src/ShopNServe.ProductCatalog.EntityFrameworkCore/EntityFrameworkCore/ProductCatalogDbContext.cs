@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShopNServe.ProductCatalog.Products;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -10,6 +11,8 @@ public class ProductCatalogDbContext : AbpDbContext<ProductCatalogDbContext>, IP
     /* Add DbSet for each Aggregate Root here. Example:
      * public DbSet<Question> Questions { get; set; }
      */
+
+    public DbSet<Product> Products { get; set; }
 
     public ProductCatalogDbContext(DbContextOptions<ProductCatalogDbContext> options)
         : base(options)

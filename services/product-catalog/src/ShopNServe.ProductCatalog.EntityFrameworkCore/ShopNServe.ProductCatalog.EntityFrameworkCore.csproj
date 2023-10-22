@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="7.4.0" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.PostgreSql" Version="7.4.0" />
     <ProjectReference Include="..\ShopNServe.ProductCatalog.Domain\ShopNServe.ProductCatalog.Domain.csproj" />
   </ItemGroup>
 

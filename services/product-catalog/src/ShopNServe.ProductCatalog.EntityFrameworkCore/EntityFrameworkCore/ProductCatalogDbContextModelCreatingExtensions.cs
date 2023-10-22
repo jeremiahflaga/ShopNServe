@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShopNServe.ProductCatalog.Products;
+using System.Reflection.Emit;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace ShopNServe.ProductCatalog.EntityFrameworkCore;
 
@@ -29,5 +32,18 @@ public static class ProductCatalogDbContextModelCreatingExtensions
             b.HasIndex(q => q.CreationTime);
         });
         */
+
+        builder.Entity<Product>(b =>
+        {
+            //Configure table & schema name
+            b.ToTable(ProductCatalogDbProperties.DbTablePrefix + "Product", ProductCatalogDbProperties.DbSchema);
+
+            b.ConfigureByConvention();
+
+            //Properties
+            b.Property(q => q.Code).IsRequired().HasMaxLength(ProductConsts.MaxCodeLength);
+            b.Property(q => q.Name).IsRequired().HasMaxLength(ProductConsts.MaxNameLength);
+            b.Property(q => q.ImageName).IsRequired().HasMaxLength(ProductConsts.MaxImageNameLength);
+        });
     }
 }
