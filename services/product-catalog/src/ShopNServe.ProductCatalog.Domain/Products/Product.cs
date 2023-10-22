@@ -17,7 +17,7 @@ public class Product : AuditedAggregateRoot<Guid>
 
     public string Name { get; private set; } = string.Empty;
 
-    public decimal Price { get; private set; }
+    public Money Price { get; private set; } = new NullMoney();
 
     public int StockCount { get; private set; }
 
@@ -32,7 +32,7 @@ public class Product : AuditedAggregateRoot<Guid>
         Guid id,
         string code,
         string name,
-        decimal price = 0.0m,
+        Money price,
         int stockCount = 0,
         string? imageName = null)
     {
@@ -45,6 +45,7 @@ public class Product : AuditedAggregateRoot<Guid>
 
         Id = id;
         Code = code;
+        Price = price ?? throw new ArgumentNullException(nameof(price));
         SetName(Check.NotNullOrWhiteSpace(name, nameof(name)));
         SetPrice(price);
         SetImageName(imageName);
@@ -80,9 +81,9 @@ public class Product : AuditedAggregateRoot<Guid>
         return this;
     }
 
-    public Product SetPrice(decimal price)
+    public Product SetPrice(Money price)
     {
-        if (price < 0.0m)
+        if (price.Amount < 0.0m)
         {
             throw new ArgumentException($"{nameof(price)} cannot be less than 0.0!");
         }

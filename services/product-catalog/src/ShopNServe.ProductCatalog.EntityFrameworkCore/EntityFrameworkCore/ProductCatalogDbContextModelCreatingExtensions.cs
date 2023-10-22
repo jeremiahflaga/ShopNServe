@@ -44,6 +44,9 @@ public static class ProductCatalogDbContextModelCreatingExtensions
             b.Property(q => q.Code).IsRequired().HasMaxLength(ProductConsts.MaxCodeLength);
             b.Property(q => q.Name).IsRequired().HasMaxLength(ProductConsts.MaxNameLength);
             b.Property(q => q.ImageName).IsRequired().HasMaxLength(ProductConsts.MaxImageNameLength);
+
+            //Relations
+            b.OwnsOne(o => o.Price);
         });
     }
 }

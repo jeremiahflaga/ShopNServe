@@ -17,7 +17,7 @@ public class ProductManager : DomainService
     public async Task<Product> CreateAsync(
         string code,
         string name,
-        decimal price = 0.0m,
+        Money price,
         int stockCount = 0,
         string? imageName = null)
     {
