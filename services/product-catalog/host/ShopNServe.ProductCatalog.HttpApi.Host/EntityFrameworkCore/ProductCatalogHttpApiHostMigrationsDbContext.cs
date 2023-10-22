@@ -1,20 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
+﻿//using Microsoft.EntityFrameworkCore;
+//using Volo.Abp.EntityFrameworkCore;
 
-namespace ShopNServe.ProductCatalog.EntityFrameworkCore;
+//namespace ShopNServe.ProductCatalog.EntityFrameworkCore;
 
-public class ProductCatalogHttpApiHostMigrationsDbContext : AbpDbContext<ProductCatalogHttpApiHostMigrationsDbContext>
-{
-    public ProductCatalogHttpApiHostMigrationsDbContext(DbContextOptions<ProductCatalogHttpApiHostMigrationsDbContext> options)
-        : base(options)
-    {
+//public class ProductCatalogHttpApiHostMigrationsDbContext : AbpDbContext<ProductCatalogHttpApiHostMigrationsDbContext>
+//{
+//    public ProductCatalogHttpApiHostMigrationsDbContext(DbContextOptions<ProductCatalogHttpApiHostMigrationsDbContext> options)
+//        : base(options)
+//    {
 
-    }
+//    }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+//    protected override void OnModelCreating(ModelBuilder modelBuilder)
+//    {
+//        base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ConfigureProductCatalog();
-    }
-}
+//        modelBuilder.ConfigureProductCatalog();
+//    }
+//}
