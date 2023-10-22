@@ -11,13 +11,13 @@ public class Product : AuditedAggregateRoot<Guid>
     /// <summary>
     /// A unique value for this product.
     /// ProductManager ensures the uniqueness of it.
-    /// It can not be changed after creation of the product.
+    /// It cannot be changed after creation of the product.
     /// </summary>
     public string Code { get; private set; } = string.Empty;
 
     public string Name { get; private set; } = string.Empty;
 
-    public float Price { get; private set; }
+    public decimal Price { get; private set; }
 
     public int StockCount { get; private set; }
 
@@ -32,7 +32,7 @@ public class Product : AuditedAggregateRoot<Guid>
         Guid id,
         string code,
         string name,
-        float price = 0.0f,
+        decimal price = 0.0m,
         int stockCount = 0,
         string? imageName = null)
     {
@@ -80,11 +80,11 @@ public class Product : AuditedAggregateRoot<Guid>
         return this;
     }
 
-    public Product SetPrice(float price)
+    public Product SetPrice(decimal price)
     {
-        if (price < 0.0f)
+        if (price < 0.0m)
         {
-            throw new ArgumentException($"{nameof(price)} can not be less than 0.0!");
+            throw new ArgumentException($"{nameof(price)} cannot be less than 0.0!");
         }
 
         Price = price;
@@ -100,7 +100,7 @@ public class Product : AuditedAggregateRoot<Guid>
     {
         if (StockCount < 0)
         {
-            throw new ArgumentException($"{nameof(stockCount)} can not be less than 0!");
+            throw new ArgumentException($"{nameof(stockCount)} cannot be less than 0!");
         }
 
         if (StockCount == stockCount)
