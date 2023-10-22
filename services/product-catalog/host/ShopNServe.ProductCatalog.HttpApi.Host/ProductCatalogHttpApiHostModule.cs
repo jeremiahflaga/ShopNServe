@@ -42,12 +42,12 @@ namespace ShopNServe.ProductCatalog;
     typeof(ProductCatalogHttpApiModule),
     typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(AbpAutofacModule),
-    //typeof(AbpCachingStackExchangeRedisModule),
+    typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
-    //typeof(AbpAuditLoggingEntityFrameworkCoreModule),
-    //typeof(AbpPermissionManagementEntityFrameworkCoreModule),
+    typeof(AbpAuditLoggingEntityFrameworkCoreModule),
+    typeof(AbpPermissionManagementEntityFrameworkCoreModule),
     //typeof(AbpSettingManagementEntityFrameworkCoreModule),
-    //typeof(AbpTenantManagementEntityFrameworkCoreModule),
+    typeof(AbpTenantManagementEntityFrameworkCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
     )]
