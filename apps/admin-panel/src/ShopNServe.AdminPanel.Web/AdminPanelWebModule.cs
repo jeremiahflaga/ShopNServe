@@ -45,7 +45,9 @@ using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using ShopNServe.AuthServer;
+using Polly;
 using ShopNServe.ProductCatalog;
+using Volo.Abp.Http.Client;
 
 namespace ShopNServe.AdminPanel.Web;
 
@@ -79,6 +81,19 @@ public class AdminPanelWebModule : AbpModule
                 //typeof(AdminPanelApplicationContractsModule).Assembly,
                 typeof(AdminPanelWebModule).Assembly
             );
+        });
+
+        PreConfigure<AbpHttpClientBuilderOptions>(options =>
+        {
+            options.ProxyClientBuildActions.Add((remoteServiceName, clientBuilder) =>
+            {
+                clientBuilder.AddTransientHttpErrorPolicy(policyBuilder =>
+                    policyBuilder.WaitAndRetryAsync(
+                        3,
+                        i => TimeSpan.FromSeconds(Math.Pow(2, i))
+                    )
+                );
+            });
         });
     }
 
