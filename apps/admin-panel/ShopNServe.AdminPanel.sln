@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopNServe.AdminPanel.Web",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopNServe.AuthServer.HttpApi.Client", "..\auth-server\src\ShopNServe.AuthServer.HttpApi.Client\ShopNServe.AuthServer.HttpApi.Client.csproj", "{8A597778-3C42-4802-A878-52BD950FF806}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopNServe.ProductCatalog.HttpApi.Client", "..\..\services\product-catalog\src\ShopNServe.ProductCatalog.HttpApi.Client\ShopNServe.ProductCatalog.HttpApi.Client.csproj", "{A1B4D04E-5CC4-4B36-BC17-E043EA473BAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{8A597778-3C42-4802-A878-52BD950FF806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A597778-3C42-4802-A878-52BD950FF806}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A597778-3C42-4802-A878-52BD950FF806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B4D04E-5CC4-4B36-BC17-E043EA473BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B4D04E-5CC4-4B36-BC17-E043EA473BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B4D04E-5CC4-4B36-BC17-E043EA473BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B4D04E-5CC4-4B36-BC17-E043EA473BAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

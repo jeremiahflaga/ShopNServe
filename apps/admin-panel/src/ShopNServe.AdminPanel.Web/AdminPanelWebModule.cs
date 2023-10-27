@@ -45,11 +45,13 @@ using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using ShopNServe.AuthServer;
+using ShopNServe.ProductCatalog;
 
 namespace ShopNServe.AdminPanel.Web;
 
 [DependsOn(
     typeof(AuthServerHttpApiClientModule),
+    typeof(ProductCatalogHttpApiClientModule),
     //typeof(AdminPanelHttpApiModule),
     typeof(AbpAspNetCoreAuthenticationOpenIdConnectModule),
     typeof(AbpAspNetCoreMvcClientModule),
