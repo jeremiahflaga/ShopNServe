@@ -23,7 +23,7 @@ namespace ShopNServe.AdminPanel.Web.Pages
         {
             try
             {
-                //Products = (await productAppService.GetListAsync()).Items;
+                Products = (await productAppService.GetListAsync()).Items;
 
             }
             catch (Exception e)
