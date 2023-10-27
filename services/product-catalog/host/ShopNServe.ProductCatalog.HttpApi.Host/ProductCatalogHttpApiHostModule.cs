@@ -34,6 +34,7 @@ using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.Timing;
 
 namespace ShopNServe.ProductCatalog;
 
@@ -160,6 +161,11 @@ public class ProductCatalogHttpApiHostModule : AbpModule
         Configure<AbpAspNetCoreMvcOptions>(options =>
         {
             options.ConventionalControllers.Create(typeof(ProductCatalogApplicationModule).Assembly);
+        });
+
+        Configure<AbpClockOptions>(options =>
+        {
+            options.Kind = DateTimeKind.Utc;
         });
     }
 
