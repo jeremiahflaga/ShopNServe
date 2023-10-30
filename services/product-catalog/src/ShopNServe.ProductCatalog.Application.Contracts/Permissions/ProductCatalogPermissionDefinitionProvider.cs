@@ -10,9 +10,10 @@ public class ProductCatalogPermissionDefinitionProvider : PermissionDefinitionPr
     {
         var myGroup = context.AddGroup(ProductCatalogPermissions.GroupName, L("Permission:ProductCatalog"));
 
-        myGroup.AddPermission(ProductCatalogPermissions.Products.Delete, L("Permission:ProductCatalog:Delete"));
-        myGroup.AddPermission(ProductCatalogPermissions.Products.Update, L("Permission:ProductCatalog:Update"));
-        myGroup.AddPermission(ProductCatalogPermissions.Products.Create, L("Permission:ProductCatalog:Create"));
+        var prodCat = myGroup.AddPermission(ProductCatalogPermissions.Products.Default, L("Permission:ProductCatalog"));
+        prodCat.AddChild(ProductCatalogPermissions.Products.Delete, L("Permission:ProductCatalog:Delete"));
+        prodCat.AddChild(ProductCatalogPermissions.Products.Update, L("Permission:ProductCatalog:Update"));
+        prodCat.AddChild(ProductCatalogPermissions.Products.Create, L("Permission:ProductCatalog:Create"));
     }
 
     private static LocalizableString L(string name)
