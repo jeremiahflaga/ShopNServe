@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\services\product-catalog\src\ShopNServe.ProductCatalog.Application.Contracts\ShopNServe.ProductCatalog.Application.Contracts.csproj" />
     <ProjectReference Include="..\ShopNServe.AuthServer.Domain.Shared\ShopNServe.AuthServer.Domain.Shared.csproj" />
   </ItemGroup>
 

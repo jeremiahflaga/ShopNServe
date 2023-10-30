@@ -35,6 +35,7 @@ using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Timing;
+using Volo.Abp.Data;
 
 namespace ShopNServe.ProductCatalog;
 
@@ -166,6 +167,18 @@ public class ProductCatalogHttpApiHostModule : AbpModule
         Configure<AbpClockOptions>(options =>
         {
             options.Kind = DateTimeKind.Utc;
+        });
+
+        Configure<AbpDbConnectionOptions>(options =>
+        {
+            options.Databases.Configure("AdminServices", database =>
+            {
+                //database.MappedConnections.Add("AbpAuditLogging");
+                database.MappedConnections.Add("AbpPermissionManagement");
+                //database.MappedConnections.Add("AbpSettingManagement");
+                //database.MappedConnections.Add("AbpFeatureManagement");
+                //database.MappedConnections.Add("AbpBlobStoring");
+            });
         });
     }
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29020.237
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopNServe.AuthServer.Domain", "src\ShopNServe.AuthServer.Domain\ShopNServe.AuthServer.Domain.csproj", "{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}"
 EndProject
@@ -36,6 +36,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopNServe.AuthServer.HttpApi.Client.ConsoleTestApp", "test\ShopNServe.AuthServer.HttpApi.Client.ConsoleTestApp\ShopNServe.AuthServer.HttpApi.Client.ConsoleTestApp.csproj", "{EF480016-9127-4916-8735-D2466BDBC582}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopNServe.AuthServer.DbMigrator", "src\ShopNServe.AuthServer.DbMigrator\ShopNServe.AuthServer.DbMigrator.csproj", "{AA94D832-1CCC-4715-95A9-A483F23A1A5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopNServe.ProductCatalog.Application.Contracts", "..\..\services\product-catalog\src\ShopNServe.ProductCatalog.Application.Contracts\ShopNServe.ProductCatalog.Application.Contracts.csproj", "{7FED1402-8C70-4865-8688-45F221F7376B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,10 @@ Global
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FED1402-8C70-4865-8688-45F221F7376B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FED1402-8C70-4865-8688-45F221F7376B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FED1402-8C70-4865-8688-45F221F7376B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FED1402-8C70-4865-8688-45F221F7376B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
