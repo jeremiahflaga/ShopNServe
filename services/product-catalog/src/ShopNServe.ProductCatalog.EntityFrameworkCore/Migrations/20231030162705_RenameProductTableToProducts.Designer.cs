@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ShopNServe.ProductCatalog.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace ShopNServe.ProductCatalog.Migrations
 {
     [DbContext(typeof(ProductCatalogDbContext))]
-    partial class ProductCatalogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231030162705_RenameProductTableToProducts")]
+    partial class RenameProductTableToProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,10 +77,6 @@ namespace ShopNServe.ProductCatalog.Migrations
 
                     b.Property<int>("StockCount")
                         .HasColumnType("integer");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("TenantId");
 
                     b.HasKey("Id");
 

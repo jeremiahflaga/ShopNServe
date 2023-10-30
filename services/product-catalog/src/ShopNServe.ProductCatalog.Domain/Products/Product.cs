@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp;
+using Volo.Abp.MultiTenancy;
 
 namespace ShopNServe.ProductCatalog.Products;
 
-public class Product : AuditedAggregateRoot<Guid>
+public class Product : AuditedAggregateRoot<Guid>, IMultiTenant
 {
     /// <summary>
     /// A unique value for this product.
@@ -22,6 +23,8 @@ public class Product : AuditedAggregateRoot<Guid>
     public int StockCount { get; private set; }
 
     public string? ImageName { get; private set; }
+
+    public Guid? TenantId { get; private set; }
 
     private Product()
     {

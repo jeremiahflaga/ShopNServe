@@ -36,7 +36,7 @@ public static class ProductCatalogDbContextModelCreatingExtensions
         builder.Entity<Product>(b =>
         {
             //Configure table & schema name
-            b.ToTable(ProductCatalogDbProperties.DbTablePrefix + "Product", ProductCatalogDbProperties.DbSchema);
+            b.ToTable(ProductCatalogDbProperties.DbTablePrefix + "Products", ProductCatalogDbProperties.DbSchema);
 
             b.ConfigureByConvention();
 
