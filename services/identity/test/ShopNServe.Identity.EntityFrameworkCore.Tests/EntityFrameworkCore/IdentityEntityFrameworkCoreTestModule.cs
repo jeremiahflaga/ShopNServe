@@ -11,7 +11,7 @@ namespace ShopNServe.Identity.EntityFrameworkCore;
 
 [DependsOn(
     typeof(IdentityTestBaseModule),
-    typeof(IdentityEntityFrameworkCoreModule),
+    typeof(SnSIdentityEntityFrameworkCoreModule),
     typeof(AbpEntityFrameworkCoreSqliteModule)
     )]
 public class IdentityEntityFrameworkCoreTestModule : AbpModule
@@ -36,8 +36,8 @@ public class IdentityEntityFrameworkCoreTestModule : AbpModule
         var connection = new SqliteConnection("Data Source=:memory:");
         connection.Open();
 
-        new IdentityDbContext(
-            new DbContextOptionsBuilder<IdentityDbContext>().UseSqlite(connection).Options
+        new SnSIdentityDbContext(
+            new DbContextOptionsBuilder<SnSIdentityDbContext>().UseSqlite(connection).Options
         ).GetService<IRelationalDatabaseCreator>().CreateTables();
 
         return connection;

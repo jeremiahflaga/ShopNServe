@@ -6,12 +6,14 @@ using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Validation;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.Identity;
 
 namespace ShopNServe.Identity;
 
 [DependsOn(
     typeof(AbpValidationModule),
-    typeof(AbpDddDomainSharedModule)
+    typeof(AbpDddDomainSharedModule),
+    typeof(AbpIdentityDomainSharedModule)
 )]
 public class IdentityDomainSharedModule : AbpModule
 {

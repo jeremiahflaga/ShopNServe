@@ -2,6 +2,8 @@
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
+using Volo.Abp.Identity;
+//using Volo.Abp.Account;
 
 namespace ShopNServe.Identity;
 
@@ -9,7 +11,10 @@ namespace ShopNServe.Identity;
     typeof(IdentityDomainModule),
     typeof(IdentityApplicationContractsModule),
     typeof(AbpDddApplicationModule),
-    typeof(AbpAutoMapperModule)
+    typeof(AbpAutoMapperModule),
+    typeof(AbpIdentityApplicationModule)
+    //,
+    //typeof(AbpAccountApplicationModule) // AbpAccountApplicationModule is the one which seeds data for AbpUsers table
     )]
 public class IdentityApplicationModule : AbpModule
 {

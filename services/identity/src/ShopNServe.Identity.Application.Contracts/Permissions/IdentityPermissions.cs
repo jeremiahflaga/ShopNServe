@@ -1,13 +1,13 @@
-﻿using Volo.Abp.Reflection;
+﻿//using Volo.Abp.Reflection;
 
-namespace ShopNServe.Identity.Permissions;
+//namespace ShopNServe.Identity.Permissions;
 
-public class IdentityPermissions
-{
-    public const string GroupName = "Identity";
+//public class IdentityPermissions
+//{
+//    public const string GroupName = "Identity";
 
-    public static string[] GetAll()
-    {
-        return ReflectionHelper.GetPublicConstantsRecursively(typeof(IdentityPermissions));
-    }
-}
+//    public static string[] GetAll()
+//    {
+//        return ReflectionHelper.GetPublicConstantsRecursively(typeof(IdentityPermissions));
+//    }
+//}

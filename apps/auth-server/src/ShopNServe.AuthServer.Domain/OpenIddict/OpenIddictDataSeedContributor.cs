@@ -82,6 +82,15 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 Resources = { "ProductCatalog" }
             });
         }
+        if (await _openIddictScopeRepository.FindByNameAsync("Identity") == null)
+        {
+            await _scopeManager.CreateAsync(new OpenIddictScopeDescriptor
+            {
+                Name = "Identity",
+                DisplayName = "Identity Swagger",
+                Resources = { "Identity" }
+            });
+        }
     }
 
     private async Task CreateApplicationsAsync()
@@ -234,6 +243,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         await CreateProductCatalogSwaggerClientApplicationAsync(commonScopes, configurationSection);
+        await CreateIdentityServiceSwaggerClientApplicationAsync(commonScopes, configurationSection);
     }
 
     private async Task CreateProductCatalogSwaggerClientApplicationAsync(List<string> commonScopes, IConfigurationSection configurationSection)
@@ -252,6 +262,28 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 secret: null,
                 grantTypes: new List<string> { OpenIddictConstants.GrantTypes.AuthorizationCode, },
                 scopes: new List<string>(commonScopes) { "ProductCatalog" },
+                redirectUri: $"{swaggerRootUrl}/swagger/oauth2-redirect.html",
+                clientUri: swaggerRootUrl
+            );
+        }
+    }
+
+    private async Task CreateIdentityServiceSwaggerClientApplicationAsync(List<string> commonScopes, IConfigurationSection configurationSection)
+    {
+        // Identity Service Swagger Client
+        var identityServiceSwaggerClientId = configurationSection["Identity_Swagger:ClientId"];
+        if (!identityServiceSwaggerClientId.IsNullOrWhiteSpace())
+        {
+            var swaggerRootUrl = configurationSection["Identity_Swagger:RootUrl"]?.TrimEnd('/');
+
+            await CreateApplicationAsync(
+                name: identityServiceSwaggerClientId!,
+                type: OpenIddictConstants.ClientTypes.Public,
+                consentType: OpenIddictConstants.ConsentTypes.Implicit,
+                displayName: "Identity Service Swagger Application",
+                secret: null,
+                grantTypes: new List<string> { OpenIddictConstants.GrantTypes.AuthorizationCode, },
+                scopes: new List<string>(commonScopes) { "Identity" },
                 redirectUri: $"{swaggerRootUrl}/swagger/oauth2-redirect.html",
                 clientUri: swaggerRootUrl
             );

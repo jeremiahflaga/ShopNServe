@@ -3,9 +3,9 @@ using Volo.Abp;
 
 namespace ShopNServe.Identity.EntityFrameworkCore;
 
-public static class IdentityDbContextModelCreatingExtensions
+public static class SnSIdentityDbContextModelCreatingExtensions
 {
-    public static void ConfigureIdentity(
+    public static void ConfigureSnSIdentity(
         this ModelBuilder builder)
     {
         Check.NotNull(builder, nameof(builder));

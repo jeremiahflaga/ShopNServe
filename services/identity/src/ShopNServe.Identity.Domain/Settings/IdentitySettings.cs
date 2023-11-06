@@ -1,10 +1,10 @@
-﻿namespace ShopNServe.Identity.Settings;
+﻿//namespace ShopNServe.Identity.Settings;
 
-public static class IdentitySettings
-{
-    public const string GroupName = "Identity";
+//public static class IdentitySettings
+//{
+//    public const string GroupName = "Identity";
 
-    /* Add constants for setting names. Example:
-     * public const string MySettingName = GroupName + ".MySettingName";
-     */
-}
+//    /* Add constants for setting names. Example:
+//     * public const string MySettingName = GroupName + ".MySettingName";
+//     */
+//}

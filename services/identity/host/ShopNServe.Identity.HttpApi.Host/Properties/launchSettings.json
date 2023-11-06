@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44396",
-      "sslPort": 44396
+      "applicationUrl": "https://localhost:44398",
+      "sslPort": 44398
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "ShopNServe.Identity.DemoApp": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44396",
+      "applicationUrl": "https://localhost:44398",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

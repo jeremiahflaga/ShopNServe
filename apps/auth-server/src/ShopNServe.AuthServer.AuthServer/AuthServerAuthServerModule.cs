@@ -34,6 +34,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.VirtualFileSystem;
+using ShopNServe.Identity.EntityFrameworkCore;
 
 namespace ShopNServe.AuthServer;
 
@@ -46,7 +47,8 @@ namespace ShopNServe.AuthServer;
     typeof(AbpAccountHttpApiModule),
     typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule),
     typeof(AuthServerEntityFrameworkCoreModule),
-    typeof(AbpAspNetCoreSerilogModule)
+    typeof(AbpAspNetCoreSerilogModule),
+    typeof(SnSIdentityEntityFrameworkCoreModule)
     )]
 public class AuthServerAuthServerModule : AbpModule
 {

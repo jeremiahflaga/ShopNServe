@@ -6,7 +6,7 @@ using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
-using Volo.Abp.Identity.EntityFrameworkCore;
+//using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
@@ -15,12 +15,12 @@ using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
 namespace ShopNServe.AuthServer.EntityFrameworkCore;
 
-[ReplaceDbContext(typeof(IIdentityDbContext))]
+//[ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
 [ConnectionStringName("Default")]
 public class AuthServerDbContext :
     AbpDbContext<AuthServerDbContext>,
-    IIdentityDbContext,
+    //IIdentityDbContext,
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
@@ -38,14 +38,14 @@ public class AuthServerDbContext :
      * uses this DbContext on runtime. Otherwise, it will use its own DbContext class.
      */
 
-    //Identity
-    public DbSet<IdentityUser> Users { get; set; }
-    public DbSet<IdentityRole> Roles { get; set; }
-    public DbSet<IdentityClaimType> ClaimTypes { get; set; }
-    public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
-    public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
-    public DbSet<IdentityLinkUser> LinkUsers { get; set; }
-    public DbSet<IdentityUserDelegation> UserDelegations { get; set; }
+    ////Identity
+    //public DbSet<IdentityUser> Users { get; set; }
+    //public DbSet<IdentityRole> Roles { get; set; }
+    //public DbSet<IdentityClaimType> ClaimTypes { get; set; }
+    //public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
+    //public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
+    //public DbSet<IdentityLinkUser> LinkUsers { get; set; }
+    //public DbSet<IdentityUserDelegation> UserDelegations { get; set; }
 
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }
@@ -69,7 +69,7 @@ public class AuthServerDbContext :
         builder.ConfigureSettingManagement();
         builder.ConfigureBackgroundJobs();
         builder.ConfigureAuditLogging();
-        builder.ConfigureIdentity();
+        //builder.ConfigureIdentity();
         builder.ConfigureOpenIddict();
         builder.ConfigureFeatureManagement();
         builder.ConfigureTenantManagement();

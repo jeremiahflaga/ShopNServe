@@ -1,4 +1,5 @@
 ﻿using ShopNServe.AuthServer.EntityFrameworkCore;
+using ShopNServe.Identity.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
@@ -10,7 +11,8 @@ namespace ShopNServe.AuthServer.DbMigrator;
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AuthServerEntityFrameworkCoreModule),
-    typeof(AuthServerApplicationContractsModule)
+    typeof(AuthServerApplicationContractsModule),
+    typeof(SnSIdentityEntityFrameworkCoreModule)
     )]
 public class AuthServerDbMigratorModule : AbpModule
 {

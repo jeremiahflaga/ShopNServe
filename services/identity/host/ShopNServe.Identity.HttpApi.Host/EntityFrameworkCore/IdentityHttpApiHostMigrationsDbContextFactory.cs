@@ -1,28 +1,28 @@
-﻿using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
+﻿//using System.IO;
+//using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore.Design;
+//using Microsoft.Extensions.Configuration;
 
-namespace ShopNServe.Identity.EntityFrameworkCore;
+//namespace ShopNServe.Identity.EntityFrameworkCore;
 
-public class IdentityHttpApiHostMigrationsDbContextFactory : IDesignTimeDbContextFactory<IdentityHttpApiHostMigrationsDbContext>
-{
-    public IdentityHttpApiHostMigrationsDbContext CreateDbContext(string[] args)
-    {
-        var configuration = BuildConfiguration();
+//public class IdentityHttpApiHostMigrationsDbContextFactory : IDesignTimeDbContextFactory<IdentityHttpApiHostMigrationsDbContext>
+//{
+//    public IdentityHttpApiHostMigrationsDbContext CreateDbContext(string[] args)
+//    {
+//        var configuration = BuildConfiguration();
 
-        var builder = new DbContextOptionsBuilder<IdentityHttpApiHostMigrationsDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Identity"));
+//        var builder = new DbContextOptionsBuilder<IdentityHttpApiHostMigrationsDbContext>()
+//            .UseNpgsql(configuration.GetConnectionString("Identity"));
 
-        return new IdentityHttpApiHostMigrationsDbContext(builder.Options);
-    }
+//        return new IdentityHttpApiHostMigrationsDbContext(builder.Options);
+//    }
 
-    private static IConfigurationRoot BuildConfiguration()
-    {
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false);
+//    private static IConfigurationRoot BuildConfiguration()
+//    {
+//        var builder = new ConfigurationBuilder()
+//            .SetBasePath(Directory.GetCurrentDirectory())
+//            .AddJsonFile("appsettings.json", optional: false);
 
-        return builder.Build();
-    }
-}
+//        return builder.Build();
+//    }
+//}

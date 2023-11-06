@@ -23,7 +23,7 @@ using Volo.Abp.Autofac;
 using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.SqlServer;
+using Volo.Abp.EntityFrameworkCore.PostgreSql;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
@@ -33,21 +33,23 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
+using System.Threading.Tasks;
+using Volo.Abp.Data;
+using Volo.Abp.Timing;
 
 namespace ShopNServe.Identity;
-
 [DependsOn(
     typeof(IdentityApplicationModule),
-    typeof(IdentityEntityFrameworkCoreModule),
+    typeof(SnSIdentityEntityFrameworkCoreModule),
     typeof(IdentityHttpApiModule),
     typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
-    typeof(AbpEntityFrameworkCoreSqlServerModule),
-    typeof(AbpAuditLoggingEntityFrameworkCoreModule),
+    typeof(AbpEntityFrameworkCorePostgreSqlModule),
+    //typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpPermissionManagementEntityFrameworkCoreModule),
-    typeof(AbpSettingManagementEntityFrameworkCoreModule),
-    typeof(AbpTenantManagementEntityFrameworkCoreModule),
+    //typeof(AbpSettingManagementEntityFrameworkCoreModule),
+    //typeof(AbpTenantManagementEntityFrameworkCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
     )]
@@ -61,7 +63,7 @@ public class IdentityHttpApiHostModule : AbpModule
 
         Configure<AbpDbContextOptions>(options =>
         {
-            options.UseSqlServer();
+            options.UseNpgsql();
         });
 
         Configure<AbpMultiTenancyOptions>(options =>
@@ -91,6 +93,9 @@ public class IdentityHttpApiHostModule : AbpModule
                 options.SwaggerDoc("v1", new OpenApiInfo {Title = "Identity API", Version = "v1"});
                 options.DocInclusionPredicate((docName, description) => true);
                 options.CustomSchemaIds(type => type.FullName);
+
+                ////Hides ABP Related endpoints on Swagger UI: https://github.com/abpframework/abp/issues/3758#issuecomment-1063043571
+                //options.HideAbpEndpoints();
             });
 
         Configure<AbpLocalizationOptions>(options =>
@@ -155,9 +160,14 @@ public class IdentityHttpApiHostModule : AbpModule
                     .AllowCredentials();
             });
         });
+
+        Configure<AbpClockOptions>(options =>
+        {
+            options.Kind = DateTimeKind.Utc;
+        });
     }
 
-    public override void OnApplicationInitialization(ApplicationInitializationContext context)
+    public async override Task OnApplicationInitializationAsync(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
         var env = context.GetEnvironment();
@@ -195,5 +205,17 @@ public class IdentityHttpApiHostModule : AbpModule
         app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
+
+        await SeedData(context);
+    }
+
+    private async Task SeedData(ApplicationInitializationContext context)
+    {
+        using (var scope = context.ServiceProvider.CreateScope())
+        {
+            await scope.ServiceProvider
+                .GetRequiredService<IDataSeeder>()
+                .SeedAsync();
+        }
     }
 }

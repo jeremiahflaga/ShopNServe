@@ -12,8 +12,8 @@ namespace ShopNServe.AuthServer;
 
 [DependsOn(
     typeof(AuthServerApplicationContractsModule),
-    typeof(AbpAccountHttpApiClientModule),
-    typeof(AbpIdentityHttpApiClientModule),
+    //typeof(AbpAccountHttpApiClientModule),
+    //typeof(AbpIdentityHttpApiClientModule),
     typeof(AbpPermissionManagementHttpApiClientModule),
     typeof(AbpTenantManagementHttpApiClientModule),
     typeof(AbpFeatureManagementHttpApiClientModule),
