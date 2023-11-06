@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "ShopNServe.Identity.Domain.Shared": {
+      "path": "src/ShopNServe.Identity.Domain.Shared/ShopNServe.Identity.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.Domain": {
+      "path": "src/ShopNServe.Identity.Domain/ShopNServe.Identity.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.Application.Contracts": {
+      "path": "src/ShopNServe.Identity.Application.Contracts/ShopNServe.Identity.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.Application": {
+      "path": "src/ShopNServe.Identity.Application/ShopNServe.Identity.Application.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.EntityFrameworkCore": {
+      "path": "src/ShopNServe.Identity.EntityFrameworkCore/ShopNServe.Identity.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.MongoDB": {
+      "path": "src/ShopNServe.Identity.MongoDB/ShopNServe.Identity.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.HttpApi": {
+      "path": "src/ShopNServe.Identity.HttpApi/ShopNServe.Identity.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.HttpApi.Client": {
+      "path": "src/ShopNServe.Identity.HttpApi.Client/ShopNServe.Identity.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.TestBase": {
+      "path": "test/ShopNServe.Identity.TestBase/ShopNServe.Identity.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.Identity.EntityFrameworkCore.Tests": {
+      "path": "test/ShopNServe.Identity.EntityFrameworkCore.Tests/ShopNServe.Identity.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.Identity.MongoDB.Tests": {
+      "path": "test/ShopNServe.Identity.MongoDB.Tests/ShopNServe.Identity.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.Identity.Domain.Tests": {
+      "path": "test/ShopNServe.Identity.Domain.Tests/ShopNServe.Identity.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.Identity.Application.Tests": {
+      "path": "test/ShopNServe.Identity.Application.Tests/ShopNServe.Identity.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.Identity.HttpApi.Host": {
+      "path": "host/ShopNServe.Identity.HttpApi.Host/ShopNServe.Identity.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.Identity.Web": {
+      "path": "src/ShopNServe.Identity.Web/ShopNServe.Identity.Web.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/ShopNServe.Identity.HttpApi.Client.ConsoleTestApp/ShopNServe.Identity.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "ShopNServe.Identity.Web.Host": {
+      "path": "host/ShopNServe.Identity.Web.Host/ShopNServe.Identity.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.Identity.AuthServer": {
+      "path": "host/ShopNServe.Identity.AuthServer/ShopNServe.Identity.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.Identity.Host.Shared": {
+      "path": "host/ShopNServe.Identity.Host.Shared/ShopNServe.Identity.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.Identity.Web.Unified": {
+      "path": "host/ShopNServe.Identity.Web.Unified/ShopNServe.Identity.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.Identity.Blazor": {
+      "path": "src/ShopNServe.Identity.Blazor/ShopNServe.Identity.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.Blazor.Host": {
+      "path": "host/ShopNServe.Identity.Blazor.Host/ShopNServe.Identity.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "ShopNServe.Identity.Blazor.Server": {
+      "path": "src/ShopNServe.Identity.Blazor.Server/ShopNServe.Identity.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.Blazor.WebAssembly": {
+      "path": "src/ShopNServe.Identity.Blazor.WebAssembly/ShopNServe.Identity.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "ShopNServe.Identity.Blazor.Server.Host": {
+      "path": "host/ShopNServe.Identity.Blazor.Server.Host/ShopNServe.Identity.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ShopNServe.Identity</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="7.4.1" />
+    <ProjectReference Include="..\ShopNServe.Identity.Application.Contracts\ShopNServe.Identity.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
