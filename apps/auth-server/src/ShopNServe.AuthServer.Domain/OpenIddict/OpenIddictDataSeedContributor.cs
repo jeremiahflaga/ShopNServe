@@ -226,7 +226,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 {
                     OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
                 },
-                scopes: new List<string>(commonScopes) { "AdminPanel", "ProductCatalog" },
+                scopes: new List<string>(commonScopes) { "AdminPanel" },
                 redirectUri: $"{webClientRootUrl}signin-oidc",
                 clientUri: webClientRootUrl,
                 postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
