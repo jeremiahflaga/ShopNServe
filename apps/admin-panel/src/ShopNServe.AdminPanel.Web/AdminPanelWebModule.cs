@@ -48,6 +48,8 @@ using ShopNServe.AuthServer;
 using Polly;
 using ShopNServe.ProductCatalog;
 using Volo.Abp.Http.Client;
+using System.Net.Http.Headers;
+using Volo.Abp.Http.Client.Authentication;
 
 namespace ShopNServe.AdminPanel.Web;
 
@@ -93,6 +95,19 @@ public class AdminPanelWebModule : AbpModule
                         i => TimeSpan.FromSeconds(Math.Pow(2, i))
                     )
                 );
+            });
+
+            // Adding Bearer Access Token and disable SSL validation for Dynamic Proxies: https://support.abp.io/QA/Questions/2566/Adding-Bearer-Access-Token-and-disable-SSL-validation-for-Dynamic-Proxies
+            // Question: Dynamic C# Client Authorization: https://github.com/abpframework/abp/issues/7551
+            // Dynamic C# API Client Proxies Unable to get jwt in header: https://github.com/abpframework/abp/issues/14509
+            options.ProxyClientActions.Add(async (name, serviceProvider, httpClient) =>
+            {
+                var accessTokenProvider = serviceProvider.GetService<IAbpAccessTokenProvider>();
+                if ( accessTokenProvider != null )
+                {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", 
+                        await accessTokenProvider.GetTokenAsync());
+                }
             });
         });
     }
