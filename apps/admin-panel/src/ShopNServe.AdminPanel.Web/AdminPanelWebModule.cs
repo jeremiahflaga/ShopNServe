@@ -48,6 +48,8 @@ using ShopNServe.AuthServer;
 using Polly;
 using ShopNServe.ProductCatalog;
 using Volo.Abp.Http.Client;
+using System.Net.Http.Headers;
+using Volo.Abp.Http.Client.Authentication;
 
 namespace ShopNServe.AdminPanel.Web;
 
@@ -93,6 +95,20 @@ public class AdminPanelWebModule : AbpModule
                         i => TimeSpan.FromSeconds(Math.Pow(2, i))
                     )
                 );
+            });
+
+            // Adding Bearer Access Token and disable SSL validation for Dynamic Proxies: https://support.abp.io/QA/Questions/2566/Adding-Bearer-Access-Token-and-disable-SSL-validation-for-Dynamic-Proxies
+            // Question: Dynamic C# Client Authorization: https://github.com/abpframework/abp/issues/7551
+            // Dynamic C# API Client Proxies Unable to get jwt in header: https://github.com/abpframework/abp/issues/14509
+            options.ProxyClientActions.Add(async (name, serviceProvider, httpClient) =>
+            {
+                var accessTokenProvider = serviceProvider.GetService<IAbpAccessTokenProvider>();
+                if (accessTokenProvider != null)
+                {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",
+                        //await accessTokenProvider.GetTokenAsync());
+                        "eyJhbGciOiJSUzI1NiIsImtpZCI6IjBDQkJCNDJCM0I0QUMyMkZBMDIwRUMyNTIwQjUwQzgxNTUyNTkwNzIiLCJ4NXQiOiJETHUwS3p0S3dpLWdJT3dsSUxVTWdWVWxrSEkiLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiIzYTBlYzA1ZC1mZDM2LTlhZGEtNDhjMy1lMmM0YTJlMmQ5ZWQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYWJwLmlvIiwicm9sZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6ImFkbWluIiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjoiRmFsc2UiLCJlbWFpbF92ZXJpZmllZCI6IkZhbHNlIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsIm9pX3Byc3QiOiJQcm9kdWN0Q2F0YWxvZ19Td2FnZ2VyIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzOTEvIiwib2lfYXVfaWQiOiIzYTBlYzA3Yi02OWFjLTExODEtOWNkZC1mNDU4NjRiYjk1YTYiLCJjbGllbnRfaWQiOiJQcm9kdWN0Q2F0YWxvZ19Td2FnZ2VyIiwib2lfdGtuX2lkIjoiM2EwZWMyNjktOWVjMS1jODYxLTM2NTgtYzY1MTMzMDU2ZjZlIiwiYXVkIjoiUHJvZHVjdENhdGFsb2ciLCJzY29wZSI6IlByb2R1Y3RDYXRhbG9nIiwianRpIjoiNWY4MjUxYzMtZjMwNS00YWQ2LThhMTMtODY3NDEyOTk2NmZjIiwiZXhwIjoxNjk5NDcyNDU0LCJpYXQiOjE2OTk0Njg4NTR9.lBp5ne_ipvRwaseYkbkBUPNJE_P7h-lL9-hvcznAbtYfOc-F9E67SWesXiMX2b0JPQyjrZTP4SvBU4qPZN205nBvbgVfT9axzrxs7UvqSDC0FX1eWL6VwHf3RXHNmSuR9rxTbyoqfhrzXABUTAbUvb5Xu9jl2rptvdhq8l6Puj_g0u_8NJz9ad4vrzDH_vqO1w_BXR8rWsXfixvV0GUhQxDrMGq7ZDzD0iSbIcpYAdhEYsDFWGJbstnKsvTKBgZHMsiHlNgPbmUAarf82Qv8zOb8vvetjpOYjFsZpnDNgfCWIpV64XilEcCemyKLym2EAZTMK-ByrO7KFM2wPHI6Yg");
+                }
             });
         });
     }
