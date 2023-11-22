@@ -122,72 +122,72 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         //    );
         //}
 
-        //Console Test / Angular Client
-        var consoleAndAngularClientId = configurationSection["AuthServer_App:ClientId"];
-        if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
-        {
-            var consoleAndAngularClientRootUrl = configurationSection["AuthServer_App:RootUrl"]?.TrimEnd('/');
-            await CreateApplicationAsync(
-                name: consoleAndAngularClientId!,
-                type: OpenIddictConstants.ClientTypes.Public,
-                consentType: OpenIddictConstants.ConsentTypes.Implicit,
-                displayName: "Console Test / Angular Application",
-                secret: null,
-                grantTypes: new List<string> {
-                    OpenIddictConstants.GrantTypes.AuthorizationCode,
-                    OpenIddictConstants.GrantTypes.Password,
-                    OpenIddictConstants.GrantTypes.ClientCredentials,
-                    OpenIddictConstants.GrantTypes.RefreshToken
-                },
-                scopes: commonScopes,
-                redirectUri: consoleAndAngularClientRootUrl,
-                clientUri: consoleAndAngularClientRootUrl,
-                postLogoutRedirectUri: consoleAndAngularClientRootUrl
-            );
-        }
+        ////Console Test / Angular Client
+        //var consoleAndAngularClientId = configurationSection["AuthServer_App:ClientId"];
+        //if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
+        //{
+        //    var consoleAndAngularClientRootUrl = configurationSection["AuthServer_App:RootUrl"]?.TrimEnd('/');
+        //    await CreateApplicationAsync(
+        //        name: consoleAndAngularClientId!,
+        //        type: OpenIddictConstants.ClientTypes.Public,
+        //        consentType: OpenIddictConstants.ConsentTypes.Implicit,
+        //        displayName: "Console Test / Angular Application",
+        //        secret: null,
+        //        grantTypes: new List<string> {
+        //            OpenIddictConstants.GrantTypes.AuthorizationCode,
+        //            OpenIddictConstants.GrantTypes.Password,
+        //            OpenIddictConstants.GrantTypes.ClientCredentials,
+        //            OpenIddictConstants.GrantTypes.RefreshToken
+        //        },
+        //        scopes: commonScopes,
+        //        redirectUri: consoleAndAngularClientRootUrl,
+        //        clientUri: consoleAndAngularClientRootUrl,
+        //        postLogoutRedirectUri: consoleAndAngularClientRootUrl
+        //    );
+        //}
 
-        // Blazor Client
-        var blazorClientId = configurationSection["AuthServer_Blazor:ClientId"];
-        if (!blazorClientId.IsNullOrWhiteSpace())
-        {
-            var blazorRootUrl = configurationSection["AuthServer_Blazor:RootUrl"]?.TrimEnd('/');
+        //// Blazor Client
+        //var blazorClientId = configurationSection["AuthServer_Blazor:ClientId"];
+        //if (!blazorClientId.IsNullOrWhiteSpace())
+        //{
+        //    var blazorRootUrl = configurationSection["AuthServer_Blazor:RootUrl"]?.TrimEnd('/');
 
-            await CreateApplicationAsync(
-                name: blazorClientId!,
-                type: OpenIddictConstants.ClientTypes.Public,
-                consentType: OpenIddictConstants.ConsentTypes.Implicit,
-                displayName: "Blazor Application",
-                secret: null,
-                grantTypes: new List<string> { OpenIddictConstants.GrantTypes.AuthorizationCode, },
-                scopes: commonScopes,
-                redirectUri: $"{blazorRootUrl}/authentication/login-callback",
-                clientUri: blazorRootUrl,
-                postLogoutRedirectUri: $"{blazorRootUrl}/authentication/logout-callback"
-            );
-        }
+        //    await CreateApplicationAsync(
+        //        name: blazorClientId!,
+        //        type: OpenIddictConstants.ClientTypes.Public,
+        //        consentType: OpenIddictConstants.ConsentTypes.Implicit,
+        //        displayName: "Blazor Application",
+        //        secret: null,
+        //        grantTypes: new List<string> { OpenIddictConstants.GrantTypes.AuthorizationCode, },
+        //        scopes: commonScopes,
+        //        redirectUri: $"{blazorRootUrl}/authentication/login-callback",
+        //        clientUri: blazorRootUrl,
+        //        postLogoutRedirectUri: $"{blazorRootUrl}/authentication/logout-callback"
+        //    );
+        //}
 
-        // Blazor Server Tiered Client
-        var blazorServerTieredClientId = configurationSection["AuthServer_BlazorServerTiered:ClientId"];
-        if (!blazorServerTieredClientId.IsNullOrWhiteSpace())
-        {
-            var blazorServerTieredRootUrl = configurationSection["AuthServer_BlazorServerTiered:RootUrl"]!.EnsureEndsWith('/');
+        //// Blazor Server Tiered Client
+        //var blazorServerTieredClientId = configurationSection["AuthServer_BlazorServerTiered:ClientId"];
+        //if (!blazorServerTieredClientId.IsNullOrWhiteSpace())
+        //{
+        //    var blazorServerTieredRootUrl = configurationSection["AuthServer_BlazorServerTiered:RootUrl"]!.EnsureEndsWith('/');
 
-            await CreateApplicationAsync(
-                name: blazorServerTieredClientId!,
-                type: OpenIddictConstants.ClientTypes.Confidential,
-                consentType: OpenIddictConstants.ConsentTypes.Implicit,
-                displayName: "Blazor Server Application",
-                secret: configurationSection["AuthServer_BlazorServerTiered:ClientSecret"] ?? "1q2w3e*",
-                grantTypes: new List<string> //Hybrid flow
-                {
-                    OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
-                },
-                scopes: commonScopes,
-                redirectUri: $"{blazorServerTieredRootUrl}signin-oidc",
-                clientUri: blazorServerTieredRootUrl,
-                postLogoutRedirectUri: $"{blazorServerTieredRootUrl}signout-callback-oidc"
-            );
-        }
+        //    await CreateApplicationAsync(
+        //        name: blazorServerTieredClientId!,
+        //        type: OpenIddictConstants.ClientTypes.Confidential,
+        //        consentType: OpenIddictConstants.ConsentTypes.Implicit,
+        //        displayName: "Blazor Server Application",
+        //        secret: configurationSection["AuthServer_BlazorServerTiered:ClientSecret"] ?? "1q2w3e*",
+        //        grantTypes: new List<string> //Hybrid flow
+        //        {
+        //            OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
+        //        },
+        //        scopes: commonScopes,
+        //        redirectUri: $"{blazorServerTieredRootUrl}signin-oidc",
+        //        clientUri: blazorServerTieredRootUrl,
+        //        postLogoutRedirectUri: $"{blazorServerTieredRootUrl}signout-callback-oidc"
+        //    );
+        //}
 
         // Swagger Client
         var swaggerClientId = configurationSection["AuthServer_Swagger:ClientId"];
