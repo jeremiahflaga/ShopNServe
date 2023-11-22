@@ -50,6 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\services\identity\src\ShopNServe.Identity.HttpApi.Client\ShopNServe.Identity.HttpApi.Client.csproj" />
     <ProjectReference Include="..\..\..\..\services\product-catalog\src\ShopNServe.ProductCatalog.HttpApi.Client\ShopNServe.ProductCatalog.HttpApi.Client.csproj" />
     <ProjectReference Include="..\..\..\auth-server\src\ShopNServe.AuthServer.HttpApi.Client\ShopNServe.AuthServer.HttpApi.Client.csproj" />
     <ProjectReference Include="..\ShopNServe.AdminPanel.Domain.Shared\ShopNServe.AdminPanel.Domain.Shared.csproj" />

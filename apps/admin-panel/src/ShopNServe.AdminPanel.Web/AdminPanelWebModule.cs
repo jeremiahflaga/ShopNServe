@@ -50,12 +50,14 @@ using ShopNServe.ProductCatalog;
 using Volo.Abp.Http.Client;
 using System.Net.Http.Headers;
 using Volo.Abp.Http.Client.Authentication;
+using ShopNServe.Identity;
 
 namespace ShopNServe.AdminPanel.Web;
 
 [DependsOn(
     typeof(AuthServerHttpApiClientModule),
     typeof(ProductCatalogHttpApiClientModule),
+    typeof(IdentityHttpApiClientModule),
     //typeof(AdminPanelHttpApiModule),
     typeof(AbpAspNetCoreAuthenticationOpenIdConnectModule),
     typeof(AbpAspNetCoreMvcClientModule),
@@ -203,6 +205,7 @@ public class AdminPanelWebModule : AbpModule
                 options.Scope.Add("AuthServer");
                 options.Scope.Add("AdminPanel");
                 options.Scope.Add("ProductCatalog");
+                options.Scope.Add("Identity");
             });
     }
 
