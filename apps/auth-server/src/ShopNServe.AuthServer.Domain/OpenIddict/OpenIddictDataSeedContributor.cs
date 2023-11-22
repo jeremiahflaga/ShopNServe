@@ -213,9 +213,6 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         if (!adminPanelWebClientId.IsNullOrWhiteSpace())
         {
             var webClientRootUrl = configurationSection["AdminPanel_Web:RootUrl"]!.EnsureEndsWith('/');
-
-            /* AuthServer_Web client is only needed if you created a tiered
-             * solution. Otherwise, you can delete this client. */
             await CreateApplicationAsync(
                 name: adminPanelWebClientId!,
                 type: OpenIddictConstants.ClientTypes.Confidential,
@@ -226,7 +223,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 {
                     OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit
                 },
-                scopes: new List<string>(commonScopes) { "AdminPanel" },
+                scopes: new List<string>(commonScopes) { "AdminPanel", "ProductCatalog" },
                 redirectUri: $"{webClientRootUrl}signin-oidc",
                 clientUri: webClientRootUrl,
                 postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
