@@ -206,16 +206,16 @@ public class IdentityHttpApiHostModule : AbpModule
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
 
-        await SeedData(context);
+        //await SeedData(context);
     }
 
-    private async Task SeedData(ApplicationInitializationContext context)
-    {
-        using (var scope = context.ServiceProvider.CreateScope())
-        {
-            await scope.ServiceProvider
-                .GetRequiredService<IDataSeeder>()
-                .SeedAsync();
-        }
-    }
+    //private async Task SeedData(ApplicationInitializationContext context)
+    //{
+    //    using (var scope = context.ServiceProvider.CreateScope())
+    //    {
+    //        await scope.ServiceProvider
+    //            .GetRequiredService<IDataSeeder>()
+    //            .SeedAsync();
+    //    }
+    //}
 }

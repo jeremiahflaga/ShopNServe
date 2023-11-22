@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopNServe.AuthServer.Data;
+using ShopNServe.Identity.EntityFrameworkCore;
 using Volo.Abp.DependencyInjection;
 
 namespace ShopNServe.AuthServer.EntityFrameworkCore;
@@ -28,6 +29,11 @@ public class EntityFrameworkCoreAuthServerDbSchemaMigrator
 
         await _serviceProvider
             .GetRequiredService<AuthServerDbContext>()
+            .Database
+            .MigrateAsync();
+
+        await _serviceProvider
+            .GetRequiredService<SnSIdentityDbContext>()
             .Database
             .MigrateAsync();
     }

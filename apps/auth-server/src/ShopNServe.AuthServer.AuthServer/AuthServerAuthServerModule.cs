@@ -35,6 +35,11 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.VirtualFileSystem;
 using ShopNServe.Identity.EntityFrameworkCore;
+using System.Threading.Tasks;
+using Volo.Abp.Data;
+using ShopNServe.AuthServer.OpenIddict;
+using Volo.Abp.Identity;
+using Volo.Abp.TenantManagement;
 
 namespace ShopNServe.AuthServer;
 
@@ -157,7 +162,7 @@ public class AuthServerAuthServerModule : AbpModule
         });
     }
 
-    public override void OnApplicationInitialization(ApplicationInitializationContext context)
+    public override async Task OnApplicationInitializationAsync(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
         var env = context.GetEnvironment();
@@ -191,5 +196,19 @@ public class AuthServerAuthServerModule : AbpModule
         app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
+
+        //await SeedData(context);
     }
+
+    //private async Task SeedData(ApplicationInitializationContext context)
+    //{
+    //    using (var scope = context.ServiceProvider.CreateScope())
+    //    {
+    //        await scope.ServiceProvider
+    //        .GetRequiredService<OpenIddictDataSeedContributor>()
+    //            .SeedAsync(new DataSeedContext()
+    //                .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName, IdentityDataSeedContributor.AdminEmailDefaultValue)
+    //                .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName, IdentityDataSeedContributor.AdminPasswordDefaultValue));
+    //    }
+    //}
 }

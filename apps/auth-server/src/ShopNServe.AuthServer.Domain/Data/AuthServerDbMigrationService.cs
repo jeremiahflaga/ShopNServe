@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -98,6 +99,9 @@ public class AuthServerDbMigrationService : ITransientDependency
 
     private async Task SeedDataAsync(Tenant? tenant = null)
     {
+        //if (typeof(IdentityDataSeedContributor).IsAssignableFrom(_dataSeeder.GetType()))
+        //    return;
+
         Logger.LogInformation($"Executing {(tenant == null ? "host" : tenant.Name + " tenant")} database seed...");
 
         await _dataSeeder.SeedAsync(new DataSeedContext(tenant?.Id)
