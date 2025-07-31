@@ -1,0 +1,1 @@
+These docker related files were copied from the eShopOnAbp project - https://github.com/abpframework/eShopOnAbp/tree/main/etc/docker
